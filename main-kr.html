@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+.search-container {
+    position: relative;
+    width: 300px;
+    
+   
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    padding-right: 30px;
+    border-radius: 10px;
+}
+
+#mobile-search {
+    display: none; /* Hidden by default */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #ff9900;
+    border: none; /* Remove border */
+    border-radius: 4px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #333;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: white;
+   
+    z-index: 1000;
+    text-align: right; /* Align text to the right */
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions div:hover {
+    background-color: #c9c9c9;
+}
+
+/* Fullscreen Search Styles */
+.fullscreen-search {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-content {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.fullscreen-content input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    padding-right: 30px;
+}
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+.fullscreen-suggestions {
+    margin-top: 10px;
+    text-align: right; /* Align text to the right */
+}
+
+.fullscreen-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.fullscreen-suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 600px) {
+    #search {
+        display: none;
+    }
+
+    #mobile-search {
+        display: flex; /* Use flexbox to center the icon */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+}
+        body {
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background-color: #271252;
+            font-family: Arial, sans-serif;
+        }
+        .swiper-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 0;
+        }
+        .swiper-slide {
+            position: relative;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            transform: translateY(-10%);
+            z-index: 10;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .info {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        @media (max-width: 768px) {
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: none;
+            }
+            .title {
+                font-size: 1.5em;
+            }
+            .info {
+                font-size: 1em;
+            }
+            .slide-content {
+                left: 2%;
+            }
+        }
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.2em;
+            }
+            .info {
+                font-size: 0.9em;
+            }
+            .slide-content {
+                bottom: 5%;
+                left: 2%;
+            }
+        }
+        .movie-main {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .movie {
+            display: inline-block;
+            margin: 5px;
+            position: relative;
+        }
+        .movie img {
+            width: 260px;
+            height: 368px;
+            border-radius: 10px;
+            display: block;
+        }
+        .movie .overlay {
+            width: 260px;
+            height: 368px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #000000b3;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            pointer-events: none;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+        .movie:hover .overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .movie .overlay img {
+            border-radius: 100px;
+        }
+        .movie .overlay .info {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .movie .overlay .ratings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .movie .overlay .ratings img {
+            width: 50px;
+            height: 50px;
+            margin-left: 20px;
+        }
+        .movie .overlay .ratings .rating {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn-movie {
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #796cc5;
+            border: none;
+            border-radius: 5px;
+            height: 5vh;
+            place-items: center;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+        .btn-movie:hover {
+            background-color: #504685;
+        }
+        .btn-movie:active {
+            transform: scale(0.98);
+        }
+        .btn-movie:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(46, 41, 75);
+        }
+        .a12 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .movie img {
+                width: 229px;
+                height: 324px;
+                border-radius: 10px;
+                margin-left: 67px;
+            }
+            .movie .overlay {
+                width: 229px;
+                height: 324px;
+                margin-left: 67px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container22">
+            <a href="main-kr.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="                                               ....گەڕان" onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="                                              ....گەڕان" onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    
+                    
+                    
+                    <li><a href="main-kr.html"><b>سەرەکی</b></a></li>
+                    <li><a href="movies-kr.html"><b>فلیمەکان</b></a></li>
+                    <li><a href="series-ar.html"><b>زنجیرەکان</b></a></li>
+                    <li><a href="#"><b>ئەنیمەیشن</b></a></li>
+                
+                    <li><a href="#"><strong>ئەنیمی</strong></a></li>
+                    <li><a href="#"> <b>دەربارە</b></a></li>
+                    
+                    
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                <li><a href="#"> <b>دەربارە</b></a></li>
+                <li><a href="#"><strong>ئەنیمی</strong></a></li>
+                    <li><a href="#"><b>ئەنیمەیشن</b></a></li>
+                    <li><a href="series-ar.html"><b>زنجیرەکان</b></a></li>
+                    <li><a href="movies-kr.html"><b>فلیمەکان</b></a></li>
+                    <li><a href="main-kr.html"><b>سەرەکی</b></a></li>
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="16.jpg" alt="Movie 1">
+                <div class="slide-content">
+                    <div class="title">Movie Title 1</div>
+                    <div class="info">Release Date: 2024 | Rating: 8.5</div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="3.jpg" alt="Movie 2">
+                <div class="slide-content">
+                    <div class="title">Movie Title 2</div>
+                    <div class="info">Release Date: 2024 | Rating: 7.9</div>
+                </div>
+            </div>
+            <!-- Add more slides as needed -->
+        </div>
+        <!-- Add Pagination -->
+        
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <div class="content-section">
+        <h1 class="movie-main"><strong>فلیمەکان</strong></h1>
+        <div class="movie">
+            <a href="avengers-endgame_details-ar.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="a12">
+            <a href="movie.html">
+                <button class="btn-movie"><b>بینینی زیاتر</b></button>
+            </a>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h1 class="movie-main"><strong>زنجیرەکان</strong></h1>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+        
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="a12">
+            <a href="movie.html">
+                <button class="btn-movie"><b>بینینی زیاتر</b></button>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="content-section">
+        <h1 class="movie-main"><strong>ئەنیمەیشن</strong></h1>
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+        
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="movie">
+            <a href="avengers-endgame_details.html">
+                <img src="avengers_endgame.png" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">Avengers Endgame</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.4</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">94%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+         </div>
+
+
+         <div class="a12">
+            <a href="movie.html">
+                <button class="btn-movie"><b>بینینی زیاتر</b></button>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="container23">
+            <p class="copy">&copy; 2024 Kurd<span>cc</span>. <strong> .مافی ئەم بەرهەمانە پارێزراوە</strong></p>
+    
+        </div>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+    function openSearch() {
+        var overlay = document.getElementById("myOverlay");
+        if (overlay.style.display === "block") {
+          overlay.style.display = "none";
+        } else {
+          overlay.style.display = "block";
+        }
+      }
+
+      function closeSearch() {
+        var overlay = document.getElementById("myOverlay");
+        overlay.style.display = "none";
+      }
+
+      var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+
+
+
+
+
+
+
+      const data = [
+    { name: 'Avengers Endgame', url: 'avengers-endgame_details' },
+    { name: 'Young Sheldon', url: 'young-sheldon.html' },
+    { name: 'Oppenheimer', url: 'oppenheimer.html' },
+    { name: 'Leap Year', url: 'young-sheldon.html' },
+    { name: 'Napoleon', url: 'Napoleon.html' },
+    { name: 'Pawn Sacrifice', url: 'pawn-sacrifice.html' },
+    { name: 'The Queens Gambit', url: 'queens-gambit.html' },
+    { name: 'The Shawshank Redemption', url: 'the-shawshank-red.html' },
+    { name: 'Harry Potter and the Half-Blood Prince', url: 'harrypotter-halfb.html' },
+    { name: 'Harry Potter 20th Anniversary: Return to Hogwarts', url: 'harrypoter-doc.html' },
+    { name: 'Harry Potter and the Order of the Phoenix', url: 'harrypoter-order.html' },
+    { name: 'Harry Potter and the Deathly Hallows: Part 1', url: 'harrypotter-death1.html' },
+    { name: 'Inside Out 2', url: 'insideout2.html' },
+    { name: 'Harry Potter and the Deathly Hallows: Part 2', url: 'harrypotter-death2.html' },
+    // Add more movies and series here
+];
+
+function showSuggestions(query) {
+    const suggestionsContainer = document.getElementById('suggestions');
+    suggestionsContainer.innerHTML = '';
+
+    if (query.length < 3) {
+        return;
+    }
+
+    const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    
+    filteredData.forEach(item => {
+        const suggestion = document.createElement('div');
+        suggestion.textContent = item.name;
+        suggestion.onclick = () => {
+            window.location.href = item.url;
+        };
+        suggestionsContainer.appendChild(suggestion);
+    });
+}
+
+function showSuggestionsFullscreen(query) {
+    const suggestionsContainer = document.getElementById('fullscreen-suggestions');
+    suggestionsContainer.innerHTML = '';
+
+    if (query.length < 3) {
+        return;
+    }
+
+    const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    
+    filteredData.forEach(item => {
+        const suggestion = document.createElement('div');
+        suggestion.textContent = item.name;
+        suggestion.onclick = () => {
+            window.location.href = item.url;
+        };
+        suggestionsContainer.appendChild(suggestion);
+    });
+}
+
+function openFullscreenSearch() {
+    document.getElementById('fullscreen-search').style.display = 'flex';
+    document.getElementById('fullscreen-search-input').focus();
+}
+
+function closeFullscreenSearch() {
+    document.getElementById('fullscreen-search').style.display = 'none';
+}
+    </script>
+</body>
+</html>

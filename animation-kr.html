@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <style>
+      body {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-color: #271252;
+}
+select {
+    margin-left: 300px;
+}
+
+.genre-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.genre-selector select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.swiper-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    transform: translateY(-10%);
+    z-index: 10;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.info {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none; /* Hide navigation buttons on smaller screens */
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .info {
+        font-size: 1em;
+    }
+
+    .slide-content {
+        left: 2%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.2em;
+    }
+
+    .info {
+        font-size: 0.9em;
+    }
+
+    .slide-content {
+        bottom: 5%;
+        left: 2%;
+    }
+}
+
+.movie-main {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.movie {
+    display: inline-block;
+    margin: 5px;
+    position: relative; /* Ensure the overlay is positioned relative to the movie element */
+}
+
+.movie img {
+    width: 260px; /* Ensure the image fills the container */
+    height: 368px; /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin-left: 35px;
+    margin-top: 30px;
+    display: block;
+}
+
+.movie .overlay {
+    width: 260px; 
+    height: 368px; 
+    margin-top: 30px;
+    margin-left: 35px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000000b3;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    pointer-events: none; /* Prevent the overlay from affecting layout or size */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+.movie .overlay img{
+    border-radius: 100px;
+}
+
+
+.movie:hover .overlay {
+    opacity: 1;
+    pointer-events: all; /* Allow interaction when visible */
+}
+
+.movie .overlay .info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie .overlay .ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Add space between the logos and ratings */
+}
+
+.movie .overlay .ratings img {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.movie .overlay .ratings .rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.ra3a {
+    margin-left: 20px;
+}
+.ra3aa {
+    margin-left: 30px;
+}
+.ra3aa3 {
+   
+    margin-left: 20px;
+}
+.btn-movie {
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #796cc5; /* Bootstrap blue */
+    border: none;
+    border-radius: 5px;
+    height: 5vh;
+    place-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover state */
+.btn-movie:hover {
+    background-color: #504685; /* Darker blue */
+}
+
+/* Active state */
+.btn-movie:active {
+    transform: scale(0.98); /* Slightly reduce size on click */
+}
+
+/* Focus state */
+.btn-movie:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(46, 41, 75); /* Blue outline for accessibility */
+}
+
+.a12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .movie img {
+        width: 221px; /* Ensure the image fills the container */
+        height: 324px; /* Maintain aspect ratio */
+        border-radius: 10px;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    .movie .overlay {
+    width: 221px; 
+    height: 324px; 
+    margin-top: 30px;
+    margin-left: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000000b3;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    pointer-events: none; /* Prevent the overlay from affecting layout or size */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+}
+
+
+
+
+
+
+
+
+
+
+/* Navigation and other elements */
+.nav, .footer {
+    text-align: center;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+        .movie-main{
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container22">
+            <a href="main-kr.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="                                               ....گەڕان" onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="                                              ....گەڕان" onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    
+                    
+                    
+                    <li><a href="main-kr.html"><b>سەرەکی</b></a></li>
+                    <li><a href="movies-kr.html"><b>فلیمەکان</b></a></li>
+                    <li><a href="series-kr.html"><b>زنجیرەکان</b></a></li>
+                    <li><a href="animation-kr.html"><b>ئەنیمەیشن</b></a></li>
+                
+                    <li><a href="anime-kr.html"><strong>ئەنیمی</strong></a></li>
+                    <li><a href="Aboutus-kr.html"> <b>دەربارە</b></a></li>
+                    
+                    
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                     <li><a href="Aboutus-kr.html"> <b>دەربارە</b></a></li>
+                    <li><a href="anime-kr.html"><strong>ئەنیمی</strong></a></li>
+                    <li><a href="animation-kr.html"><b>ئەنیمەیشن</b></a></li>
+                    <li><a href="series-kr.html"><b>زنجیرەکان</b></a></li>
+                    <li><a href="movies-kr.html"><b>فلیمەکان</b></a></li>
+                    <li><a href="main-kr.html"><b>سەرەکی</b></a></li>
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-section">
+        <h1 class="movie-main"><strong>ئەنیمەیشن</strong></h1>
+        <div class="genre-selector">
+            <select id="genreDropdown">
+                <option value="all"><strong>هەمووی</strong></option>
+                <option value="action"><strong>ئاکشن</strong></option>
+                <option value="adventure"><strong>سەرکێشی</strong></option>
+                <option value="romantic"><strong>ڕۆمانسی</strong></option>
+                <option value="comedy"><strong>کۆمیدی</strong></option>
+                <option value="horror"><strong>ترسناک</strong></option>
+                <option value="fantasy"><strong>خەیاڵی</strong></option>
+                <option value="science fiction"><strong>خەیاڵی زانستی</strong></option>
+                <option value="drama"><strong>درامی</strong></option>
+                <option value="historical fiction"><strong>مێژووی</strong></option>
+                <option value="doc"><strong>دۆکۆیمێنتاری</strong></option>
+            </select>
+        </div>
+        <div class="movie-list">
+            <!-- Add your movie divs here with data-genre attributes -->
+            <div class="movie" data-genre="action">
+                <a href="avengers-endgame_details.html">
+                    <img src="https://imgs.search.brave.com/M6ohaNW1LSrj7truWmEwfTPLTkK2a_Vc2svEOILCGjM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzE4Lzhk/LzQzLzE4OGQ0Mzhl/ZGUyODY0OGJiNjli/OTQ2OWYwZmI0Yjdi/LmpwZw" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Avengers Endgame</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">8.4</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">94%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.9</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="movie" data-genre="drama">
+                <a href="the-shawshank-red.html">
+                    <img src="the-shawshank-red.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">The Shawshank Red</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">9.3</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">98%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">4.6</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="historical fiction">
+                <a href="pawn-sacrifice.html">
+                    <img src="https://teaser-trailer.com/wp-content/uploads/2016/05/Pawn-Sacrifice-new-poster.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Pawn Sacrifice</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.0</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">66%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.3</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="historical fiction">
+                <a href="openhaimer.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Oppenheimer </h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">8.3</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">91%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">4.2</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+
+             <div class="movie" data-genre="action">
+                <a href="Napoleon.html">
+                    <img src="https://i.ebayimg.com/images/g/V24AAOSwc49krXiC/s-l1200.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Napoleon </h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">6.4</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">59%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.0</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="romantic">
+                <a href="leap-year.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTgzMTQ2MDQxMF5BMl5BanBnXkFtZTcwODEzOTg5Mg@@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Leap Year </h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">6.4</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">47%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">2.9</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="action">
+                <a href="harrypoter-order.html">
+                    <img src="https://i.pinimg.com/564x/03/bd/c4/03bdc409a976dd77fb3ab3cc423a6a24.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">
+                                Harry Potter and the Order of the Phoenix</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.5</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">81%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.6</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="action">
+                <a href="harrypotter-halfb.html">
+                    <img src="https://lh3.googleusercontent.com/proxy/xsRuZZLY0teGWh2oTfc2EsOSo0lJP1zUeozeT2Vy0i6mj1lktmaGdUjVksP3ChopbIugKTKxRwpBNQH1RGXsc-k7OMzB70V0efREyH-U-QPuBr201CMXy2__GD3-Rrt381eIixr0eavdOheD" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">
+                                Harry Potter and the Order of the Phoenix</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.6</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">78%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="action">
+                <a href="harrypotter-death1.html">
+                    <img src="https://cdn.europosters.eu/image/750/69611.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">
+                                Harry Potter and the Deathly Hallows: Part 1</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.7</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">85%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+        
+       
+        <div class="movie" data-genre="doc">
+            <a href="harrypoter-doc.html">
+                <img src="https://images.justwatch.com/poster/258528334/s332/harry-potter-20th-anniversary-return-to-hogwarts" alt="Movie Poster">
+                <div class="overlay">
+                    <div class="info">
+                        <h3 class="movie-title">
+                            Harry Potter 20th Anniversary: Return to Hogwarts</h3>
+                    
+
+                        <p class="movie-description"></p>
+                        <div class="ratings">
+                            <div class="rating">
+                                <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                <strong class="ra3a">8.0</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                <strong class="ra3aa">86%</strong>
+                            </div>
+                            <div class="rating">
+                                <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                <strong class="ra3aa3">3.9</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </a>
+        </div>
+ 
+
+<!-- Add more movie divs here -->
+<div class="movie" data-genre="adventure">
+    <a href="harrypotter-death2.html">
+        <img src="https://image.tmdb.org/t/p/original/c54HpQmuwXjHq2C9wmoACjxoom3.jpg" alt="Movie Poster">
+        <div class="overlay">
+            <div class="info">
+                <h3 class="movie-title">
+                    Harry Potter and the Deathly Hallows: Part 2</h3>
+            
+
+                <p class="movie-description"></p>
+                <div class="ratings">
+                    <div class="rating">
+                        <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                        <strong class="ra3a">8.1</strong>
+                    </div>
+                    <div class="rating">
+                        <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                        <strong class="ra3aa">89%</strong>
+                    </div>
+                    <div class="rating">
+                        <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                        <strong class="ra3aa3">4.0</strong>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </a>
+</div>
+
+
+
+</div>
+    <div class="pagination">
+        <button class="page-button" data-page="1">1</button>
+        
+        <!-- Add more page buttons as needed -->
+    </div>
+    <footer>
+        <div class="container23">
+            <p class="copy">&copy; 2024 Kurd<span>cc</span>. <strong> .مافی ئەم بەرهەمانە پارێزراوە</strong></p>
+        </div>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+
+    <script>
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        const genreDropdown = document.getElementById('genreDropdown');
+        const movies = document.querySelectorAll('.movie');
+        const pageButtons = document.querySelectorAll('.page-button');
+        const moviesPerPage = 20;
+        let currentPage = 1;
+
+        genreDropdown.addEventListener('change', filterMovies);
+        pageButtons.forEach(button => button.addEventListener('click', changePage));
+
+        function filterMovies() {
+            const selectedGenre = genreDropdown.value;
+            currentPage = 1;
+            updateDisplay(selectedGenre, currentPage);
+        }
+
+        function changePage(event) {
+            currentPage = parseInt(event.target.getAttribute('data-page'));
+            const selectedGenre = genreDropdown.value;
+            updateDisplay(selectedGenre, currentPage);
+            updateActivePageButton();
+        }
+
+        function updateDisplay(selectedGenre, page) {
+            const start = (page - 1) * moviesPerPage;
+            const end = start + moviesPerPage;
+            let count = 0;
+
+            movies.forEach(movie => {
+                const movieGenre = movie.getAttribute('data-genre');
+                if (selectedGenre === 'all' || movieGenre === selectedGenre) {
+                    if (count >= start && count < end) {
+                        movie.style.display = 'block';
+                    } else {
+                        movie.style.display = 'none';
+                    }
+                    count++;
+                } else {
+                    movie.style.display = 'none';
+                }
+            });
+        }
+
+        function updateActivePageButton() {
+            pageButtons.forEach(button => {
+                button.classList.remove('active');
+                if (parseInt(button.getAttribute('data-page')) === currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Initial display of movies
+        updateDisplay('all', 1);
+        updateActivePageButton();
+    });
+
+
+
+    </script>
+</body>
+</html>

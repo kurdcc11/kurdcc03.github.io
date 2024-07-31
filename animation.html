@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc </title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <style>
+        .filter-container {
+            margin-left: auto;
+        }
+
+        .movie-main {
+            color: white;
+            margin-top: 90px;
+            margin-bottom: 30px;
+            font-size: xx-large;
+        }
+
+        select {
+            margin-left: 300px;
+        }
+
+        .genre-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .genre-selector select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container22">
+            <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="movie.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="Anime.html">Anime</a></li>
+                    <li><a href="Aboutus.html">About us</a></li>
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-section">
+        <h1 class="movie-main"><strong>Animation</strong></h1>
+        <div class="genre-selector">
+            <select id="genreDropdown">
+                <option value="all">All</option>
+                <option value="action">Action</option>
+                <option value="adv">Adventure</option>
+                <option value="romantic">Romantic</option>
+                <option value="comedy">Comedy</option>
+                <option value="horror">Horror</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="science fiction">Science fiction</option>
+                <option value="drama">Drama</option>
+                <option value="historical fiction">Historical Fiction</option>
+                <option value="mystery">Mystery</option>
+            </select>
+        </div>
+        <div class="movie-list">
+            <!-- Add your movie divs here with data-genre attributes -->
+            <div class="movie" data-genre="adv">
+                <a href="soul.html">
+                    <img src="https://i.etsystatic.com/18242346/r/il/54bef3/2802148755/il_570xN.2802148755_7wzt.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Soul</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">6.3</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">88%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.9</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+            <div class="movie" data-genre="action">
+                <a href="kung-fu-panda-4.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZDY0YzI0OTctYjVhYy00MTVhLWE0NTgtYTRmYTBmOTE3YTViXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Kung Fu Panda 4</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">6.3</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">86%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">2.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+            <div class="movie" data-genre="action">
+                <a href="kung-fu-panda-3.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTUyNzgxNjg2M15BMl5BanBnXkFtZTgwMTY1NDI1NjE@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Kung Fu Panda 3</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.1</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">79%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.3</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+            <div class="movie" data-genre="action">
+                <a href="kung-fu-panda-2.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYzQ0ZWIxZjAtYWI3Yy00MGM0LWFjOGYtNzcyYThiOTA3ODI1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Kung Fu Panda 2</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.4</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">74%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+            <div class="movie" data-genre="action">
+                <a href="kung-fu-panda.html">
+                    <img src="https://m.media-amazon.com/images/I/51qboNmFw3L._AC_UF894,1000_QL80_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Kung Fu Panda</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.6</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">83%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.9</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+
+
+
+
+
+
+            <div class="movie" data-genre="adv">
+                <a href="insideout-2.html">
+                    <img src="https://m.media-amazon.com/images/I/714xn6rxXSL.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Inside Out 2</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.9</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">96%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div> <div class="movie" data-genre="adv">
+                <a href="insideout.html">
+                    <img src="https://lumiere-a.akamaihd.net/v1/images/p_insideout_19751_af12286c.jpeg?region=0%2C0%2C540%2C810" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Inside Out </h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">8.1</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">89%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.8</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></div>
+                <div class="movie" data-genre="adv">
+                    <a href="despicable-me-4.html">
+                        <img src="https://dx35vtwkllhj9.cloudfront.net/universalstudios/despicable-me-4/images/gallery/image6.jpg" alt="Movie Poster">
+                        <div class="overlay">
+                            <div class="info">
+                                <h3 class="movie-title">Despicable Me 4</h3>
+                                <div class="ratings">
+                                    <div class="rating">
+                                        <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                        <strong class="ra3a">6.3</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                        <strong class="ra3aa">90%</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                        <strong class="ra3aa3">2.9</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+               
+            
+                <div class="movie" data-genre="adv">
+                    <a href="despicable-me-3.html">
+                        <img src="https://musicart.xboxlive.com/7/ce0c4c00-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="Movie Poster">
+                        <div class="overlay">
+                            <div class="info">
+                                <h3 class="movie-title">Despicable Me 3 </h3>
+                                <div class="ratings">
+                                    <div class="rating">
+                                        <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                        <strong class="ra3a">6.2</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                        <strong class="ra3aa">53%</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                        <strong class="ra3aa3">2.5</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+                <div class="movie" data-genre="adv">
+                    <a href="despicable-me-2.html">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTQxNzY1MjI5NF5BMl5BanBnXkFtZTcwNTI0MDY1OQ@@._V1_.jpg" alt="Movie Poster">
+                        <div class="overlay">
+                            <div class="info">
+                                <h3 class="movie-title">Despicable Me 2 </h3>
+                                <div class="ratings">
+                                    <div class="rating">
+                                        <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                        <strong class="ra3a">7.3</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                        <strong class="ra3aa">85%</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                        <strong class="ra3aa3">3.1</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="movie" data-genre="adv">
+                    <a href="despicable-me-1.html">
+                        <img src="https://m.media-amazon.com/images/I/81ba3g0OxRL._AC_UF894,1000_QL80_.jpg" alt="Movie Poster">
+                        <div class="overlay">
+                            <div class="info">
+                                <h3 class="movie-title">Despicable Me </h3>
+                                <div class="ratings">
+                                    <div class="rating">
+                                        <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                        <strong class="ra3a">7.6</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                        <strong class="ra3aa">83%</strong>
+                                    </div>
+                                    <div class="rating">
+                                        <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                        <strong class="ra3aa3">3.5</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+            
+            
+            
+            
+            
+            
+            </div>
+    <footer>
+        <div class="container23">
+            <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+        </div>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+            const genreDropdown = document.getElementById('genreDropdown');
+            const movies = document.querySelectorAll('.movie');
+
+            genreDropdown.addEventListener('change', filterMovies);
+
+            function filterMovies() {
+                const selectedGenre = genreDropdown.value;
+
+                movies.forEach(movie => {
+                    const movieGenre = movie.getAttribute('data-genre');
+                    if (selectedGenre === 'all' || movieGenre === selectedGenre) {
+                        movie.style.display = 'block';
+                    } else {
+                        movie.style.display = 'none';
+                    }
+                });
+            }
+
+            // Initial display of movies
+            filterMovies();
+        });
+
+
+
+
+
+
+
+
+        const data = [
+        { name: 'Avengers Endgame', url: 'avengers-endgame_details' },
+    { name: 'Young Sheldon', url: 'young-sheldon.html' },
+    { name: 'Oppenheimer', url: 'oppenheimer.html' },
+    { name: 'Leap Year', url: 'young-sheldon.html' },
+    { name: 'Napoleon', url: 'Napoleon.html' },
+    { name: 'Pawn Sacrifice', url: 'pawn-sacrifice.html' },
+    { name: 'The Queens Gambit', url: 'queens-gambit.html' },
+    { name: 'The Shawshank Redemption', url: 'the-shawshank-red.html' },
+    { name: 'Harry Potter and the Half-Blood Prince', url: 'harrypotter-halfb.html' },
+    { name: 'Harry Potter 20th Anniversary: Return to Hogwarts', url: 'harrypoter-doc.html' },
+    { name: 'Harry Potter and the Order of the Phoenix', url: 'harrypoter-order.html' },
+    { name: 'Harry Potter and the Deathly Hallows: Part 1', url: 'harrypotter-death1.html' },
+    { name: 'Inside Out 2', url: 'insideout2.html' },
+    { name: 'Harry Potter and the Deathly Hallows: Part 2', url: 'harrypotter-death2.html' },
+    { name: 'Inside Out', url: 'insideout.html' },
+    { name: 'Avatar: The Way of Water', url: 'avatar-way-water.html' },
+    { name: 'Despicable Me ', url: 'despicable-me-1.html' },
+    { name: 'Despicable Me 2 ', url: 'despicable-me-2.html' },
+    { name: 'Despicable Me 3', url: 'despicable-me-3.html' },
+    { name: 'Despicable Me 4', url: 'despicable-me-4.html' },
+    { name: 'Sherlock', url: 'sherlock.html' },
+    { name: 'Dark Matter', url: 'darkmatter.html' },
+    { name: 'The GodFather', url: 'godfather.html' },
+    { name: 'Presumed Innocent', url: 'Presumed-Innocent.html' },
+    { name: 'The Lord of the Rings: The Fellowship of the Ring', url: 'lord-of-ring-fellowship.html' },
+    { name: 'Kung Fu Panda', url: 'Kung-Fu-Panda.html' },
+    { name: 'Kung Fu Panda 2', url: 'Kung-Fu-Panda-2.html' },
+    { name: 'Kung Fu Panda 3', url: 'Kung-Fu-Panda-3.html' },
+    { name: 'Kung Fu Panda 4', url: 'Kung-Fu-Panda-4.html' },
+    { name: 'Soul', url: 'soul.html' },
+    { name: 'Interstellar', url: 'Interstellar.html' },
+      { name: 'John wick', url: 'johnwick.html' },
+    { name: 'Venom', url: 'venom.html' },
+
+  
+  // Add more movies and series here
+];
+
+function showSuggestions(query) {
+  const suggestionsContainer = document.getElementById('suggestions');
+  suggestionsContainer.innerHTML = '';
+
+  if (query.length < 3) {
+      return;
+  }
+
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+  
+  filteredData.forEach(item => {
+      const suggestion = document.createElement('div');
+      suggestion.textContent = item.name;
+      suggestion.onclick = () => {
+          window.location.href = item.url;
+      };
+      suggestionsContainer.appendChild(suggestion);
+  });
+}
+
+function showSuggestionsFullscreen(query) {
+  const suggestionsContainer = document.getElementById('fullscreen-suggestions');
+  suggestionsContainer.innerHTML = '';
+
+  if (query.length < 3) {
+      return;
+  }
+
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+  
+  filteredData.forEach(item => {
+      const suggestion = document.createElement('div');
+      suggestion.textContent = item.name;
+      suggestion.onclick = () => {
+          window.location.href = item.url;
+      };
+      suggestionsContainer.appendChild(suggestion);
+  });
+}
+
+function openFullscreenSearch() {
+  document.getElementById('fullscreen-search').style.display = 'flex';
+  document.getElementById('fullscreen-search-input').focus();
+}
+
+function closeFullscreenSearch() {
+  document.getElementById('fullscreen-search').style.display = 'none';
+}
+
+    </script>
+</body>
+</html>

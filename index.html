@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdcc</title>
+    <link rel="stylesheet" type="image/x-icon" href="kurdsss.png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+      
+/* Container styling */
+.container22 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh; /* Full viewport height */
+   
+}
+
+/* Button styling */
+.btn {
+    margin: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+   font-weight: 400;
+    color: #fff;
+    background-color: #796cc5; /* Bootstrap blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover state */
+.btn:hover {
+    background-color: #504685; /* Darker blue */
+}
+
+/* Active state */
+.btn:active {
+    transform: scale(0.98); /* Slightly reduce size on click */
+}
+
+/* Focus state */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(46, 41, 75); /* Blue outline for accessibility */
+}
+
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #252525;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  color: black;
+}
+.naw{
+  color: white;
+  font-size: xx-large;
+
+  
+}
+.naw-span{
+  color: #ff9900;
+  font-size: x-large;
+  
+  
+  }
+.copy{
+  color: white;
+}
+/* Navigation styles */
+
+  nav {
+    background: #6A3CC6;
+    color: #fff;
+    padding: 20px 0;
+    text-align: right;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+  color: #fff; /* Default text color */
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  color:  #ff9900; /* Text color on hover */
+}
+
+/* Hero section styles */
+.hero {
+  background: url('hero-image.jpg') center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}
+.naw:hover{
+   color: #ff9900;
+
+}
+
+
+
+
+/* About, Services, Trainers, Contact sections - add your own styling */
+
+/* Footer styles */
+footer {
+  background: #6A3CC6;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer .copy {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+footer .social {
+  flex: 1;
+  text-align: center;
+}
+
+footer .social a {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+footer .social img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  footer .container {
+      flex-direction: column;
+  }
+
+  footer .copy, footer .social {
+      flex: unset;
+      margin: 10px 0;
+  }
+
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+  }
+  
+  nav ul li {
+      display: block;
+      margin: 10px 0;
+  }
+  
+  .hero {
+      padding: 80px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  nav ul li {
+      display: block;
+      margin: 10px 0;
+  }
+}
+
+
+
+
+
+
+
+.menu-toggle {
+  display: none;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.menu li {
+  display: inline-block;
+  margin-left: 20px;
+  color: #fff;
+}
+
+.menu li:first-child {
+  margin-left: 0; /* Remove left margin for the first menu item */
+  color: #fff;
+}
+
+.menu a {
+ 
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-icon {
+  display: none; /* Hide the hamburger menu icon */
+  color: #fff;
+}
+
+.desktop-menu {
+  display: block; /* Ensure desktop menu is visible */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+  }
+  
+  nav {
+      text-align: left; /* Align navigation to the left for smaller screens */
+  }
+
+  .menu-toggle {
+      display: block;
+      text-align: right;
+  }
+
+  .menu {
+      display: none;
+  }
+
+  .menu-toggle input {
+      display: none;
+  }
+
+  .menu-toggle .menu-icon {
+      display: inline-block;
+      font-size: 24px;
+      cursor: pointer;
+  }
+
+  .menu li {
+      display: block;
+      margin: 10px 0;
+  }
+
+  #menu-toggle-checkbox:checked + .menu-icon {
+      transform: rotate(90deg);
+  }
+
+  #menu-toggle-checkbox:checked ~ .menu {
+      display: block;
+  }
+
+  .desktop-menu {
+      display: none;
+  }
+}
+
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 850px; /* Increase the height to make the banner bigger */
+  overflow: hidden;
+}
+
+/* Banner image */
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the banner area */
+  display: block;
+}
+
+/* Banner content */
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* Text color */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.banner-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  font-size: 1.2em;
+}
+
+
+
+
+
+
+
+a {
+  text-decoration: none;
+  color: inherit; /* Optional: Inherit color from parent element */
+}
+
+
+        </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+       <a href="#"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a> 
+        <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle-checkbox">
+            <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+              <li><a href="main.html">Home</a></li>
+              <li><a href="movie.html">Movies</a></li>
+              <li><a href="series.html">Series</a></li>
+              <li><a href="animation.html">Animation</a></li>
+              <li><a href="Anime.html">Anime</a></li>
+              <li><a href="Aboutus.html">About us</a></li>
+          </ul>
+      </div>
+      <ul class="desktop-menu">
+          <li><a href="main.html">Home</a></li>
+          <li><a href="movie.html">Movies</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="animation.html">Animation</a></li>
+          <li><a href="Anime.html">Anime</a></li>
+          <li><a href="Aboutus.html">About us</a></li>
+           
+        
+                
+                  
+                  
+              
+        </ul>
+        
+    
+    </div>
+</nav>
+<div class="banner">
+    <img src="lala-land.jpg" alt="Banner Image" class="banner-image">
+    <div class="banner-content">
+        <h1 class="h1-banner">Welcome </h1>
+        <p> Choose your language</p>
+    <div class="container22">
+        <a href="main.html"><button  class="btn"><b>Enlgish</b></button></a>
+        <a href="main-ar.html"><button  class="btn"><b>العربية</b></button></a>
+        <a href="main.html"><button  class="btn"><b>کوردی</b></button></a>
+    </div></div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+    </div><div class="social">
+    <a href="#"><img src="facebook.png" alt="Facebook"></a>
+    <a href="#"><img src="instagram.png" alt="Instagram"></a>
+    <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+    <a href="#"><img src="telegram.png" alt="Telegram"></a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

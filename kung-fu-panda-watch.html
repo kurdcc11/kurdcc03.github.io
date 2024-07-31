@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    
+    <style>
+
+.selector {
+        margin-top: 50px;
+            margin-bottom: 250px;
+        }
+        .selector label {
+            margin-right: 10px;
+        }
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .video-player iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        #season, #episode, #provider{
+            margin-top: 20px;     
+    margin-bottom: 10px; /* Example margin-bottom */
+    margin-left: 40px; /* Example margin-left */
+    margin-right: 40px; /* Example margin-right */
+    width: 200px; /* Adjust width as needed */
+    padding: 5px; /* Add padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #7e7d7d; /* Example border */
+    background-color: #7e7d7d; /* Example background color */
+    font-size: 14px; /* Example font size */
+    color: #fff8f8; /* Example text color */
+        }
+        
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    #season, #episode, #provider {
+        width: 30%; /* Make select elements full width on smaller screens */
+        margin: 5px 0; /* Adjust margins for smaller screens */
+        
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .selector {
+        order: 2; /* Moves the selector below the iframe */
+    }
+}
+/* Focus styles */
+#season:focus, #episode:focus, #provider:focus {
+    outline: none;
+    border-color: #232527;
+    box-shadow: 0 0 5px #232527;
+}
+
+
+
+
+
+
+
+       
+        .iframee {
+            margin-top: 205px;
+            margin-left: 450px;
+            width: 1024px;
+            height: 520px;
+        }
+        .a4 {
+            margin-top: 100px;
+            margin-bottom: 0;
+            display: flex;
+            flex-wrap: wrap; /* Ensure buttons wrap to the next line if necessary */
+            gap: 10px; /* Space between buttons */
+            justify-content: flex-start; /* Align buttons at the start of the row */
+            align-items: flex-start; /* Align buttons at the top of their container */
+        }
+
+        .a1, .a2, .a3 {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #796cc5; /* Bootstrap blue */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .a1:hover, .a2:hover, .a3:hover {
+            background-color: #504685; /* Darker blue on hover */
+        }
+
+        .a1:active, .a2:active, .a3:active {
+            transform: scale(0.98); /* Slightly reduce size on click */
+        }
+
+        .a1:focus, .a2:focus, .a3:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(46, 41, 75); /* Blue outline for accessibility */
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .iframee {
+                width: 600px;
+                height: 350px;
+                margin-left: 70px;
+                margin-right: auto;
+            }
+            .a4 {
+                justify-content: center;
+            }
+        }
+        @media only screen and (max-width:720px){
+            .iframee {
+                width: 350px;
+                height: 200px;
+                margin-left: 10px;
+                margin-right: auto;
+                margin-bottom: 100px;
+            }
+            .a4 {
+                justify-content: center;
+            }
+        }
+        h1 , h3{
+            color: white;
+            margin-left: 70px;
+            margin-top: 100px;
+            margin-bottom: 30px;
+        }  
+
+
+
+
+
+      
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container22">
+        <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+            <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                <i class="search-icon">&#x1F50D;</i>
+            </div>
+            <div id="suggestions" class="suggestions"></div>
+        </div>
+        
+        <!-- Fullscreen Search Overlay -->
+        <div id="fullscreen-search" class="fullscreen-search">
+            <div class="fullscreen-content">
+                <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+            </div>
+        </div>
+        <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle-checkbox">
+            <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+        <ul class="desktop-menu">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="movie.html">Movies</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="animation.html">Animation</a></li>
+            <li><a href="Anime.html">Anime</a></li>
+            <li><a href="Aboutus.html">About us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<iframe class="iframee" id="episode-iframe" src="//vidmoly.to/embed-2byoeimcjfh5.html" scrolling="no" frameborder="0" width="640" height="360" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+
+<div class="selector">
+    <label for="season"></label>
+    <select id="season"></select>
+    
+    <label for="episode"></label>
+    <select id="episode"></select>
+    
+    <label for="provider"></label>
+    <select id="provider">
+        <option value="vidmoly">Vidmoly</option>
+        <option value="stream">Stream</option>
+        
+    </select>
+</div>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="container23">
+        <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+    </div>
+    <div class="social">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+        <a href="#"><img src="telegram.png" alt="Telegram"></a>
+    </div>
+</footer>
+<script src="main.js"></script>
+<script >
+    document.querySelectorAll('.a1, .a2, .a3').forEach(button => {
+        button.addEventListener('click', () => {
+            const link = button.getAttribute('data-link');
+            document.getElementById('videoIframe').src = link;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const seasonSelect = document.getElementById('season');
+    const episodeSelect = document.getElementById('episode');
+    const providerSelect = document.getElementById('provider');
+    const videoFrame = document.getElementById('episode-iframe'); // Corrected the ID to match your HTML
+
+    const videos = {
+        "1": {
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-49adcuzxs331.html",
+                "stream": "https://streamtape.com/e/dkygxKBaMGH9d1/",
+            },
+           
+            // Add more episodes for season 1
+        }, 
+}
+    function populateSelect(selectElement, options, labelPrefix) {
+        selectElement.innerHTML = '';
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option;
+            opt.textContent = `${labelPrefix} ${option}`;
+            selectElement.appendChild(opt);
+        });
+    }
+
+    function updateVideo() {
+        const season = seasonSelect.value;
+        const episode = episodeSelect.value;
+        const provider = providerSelect.value;
+
+        const videoUrl = videos[season][episode][provider];
+        videoFrame.src = videoUrl;
+    }
+
+    seasonSelect.addEventListener('change', () => {
+        const selectedSeason = seasonSelect.value;
+        const episodes = Object.keys(videos[selectedSeason]);
+        populateSelect(episodeSelect, episodes, 'Episode');
+        updateVideo();
+    });
+
+    episodeSelect.addEventListener('change', updateVideo);
+    providerSelect.addEventListener('change', updateVideo);
+
+    // Initialize the selectors
+    const seasons = Object.keys(videos);
+    populateSelect(seasonSelect, seasons, 'Season');
+    seasonSelect.dispatchEvent(new Event('change'));
+});
+
+
+</script>
+
+</body>
+</html>
+

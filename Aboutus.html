@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <style>
+        .filter-container {
+            margin-left: auto;
+        }
+
+        .movie-main {
+            color: white;
+            margin-top: 90px;
+            margin-bottom: 30px;
+            font-size: xx-large;
+        }
+
+        select {
+            margin-left: 1300px;
+        }
+
+        .genre-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .genre-selector select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        h1{
+            color: white;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container22">
+            <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="movie.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="Anime.html">Anime</a></li>
+                    <li><a href="Aboutus.html">About us</a></li>
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="sss">
+    <h1 ><strong>Why we have a lot of ads on our website ?</strong></h1>
+    <p><strong>Because our Website is %100 free ,That's why we can't afford our servers , That's why we use online free servers.</strong></p>
+    <h1>Who created this website ?</h1>
+    <p><strong>The Website has created by <a href="#">ZheerSoftware</a>.</strong></p>
+</div>
+    <footer>
+        <div class="container23">
+            <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+        </div>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+    <script src="main.js">
+        document.addEventListener('DOMContentLoaded', function() {
+            const genreDropdown = document.getElementById('genreDropdown');
+            const movies = document.querySelectorAll('.movie');
+
+            genreDropdown.addEventListener('change', filterMovies);
+
+            function filterMovies() {
+                const selectedGenre = genreDropdown.value;
+
+                movies.forEach(movie => {
+                    const movieGenre = movie.getAttribute('data-genre');
+                    if (selectedGenre === 'all' || movieGenre === selectedGenre) {
+                        movie.style.display = 'block';
+                    } else {
+                        movie.style.display = 'none';
+                    }
+                });
+            }
+
+            // Initial display of movies
+            filterMovies();
+        });
+    </script>
+</body>
+</html>

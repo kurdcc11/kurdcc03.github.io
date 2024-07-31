@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <style>
+        .imdb, .tomato, .letter {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+        .letter {
+            border-radius: 30px;
+        }
+        .imdb-txt {
+            margin-left: 12px;
+            margin-top: 12px;
+        }
+        .av {
+            border: 2px solid #c06b3e;
+            padding: 5px;
+            border-radius: 5px;
+            width: 160px;
+            margin: 20px auto;
+            color: white;
+            margin-left: 400px;
+        }
+        .avenger-end-name {
+            color: white;
+            margin-left: 25px;
+            margin-top: 100px;
+            margin-bottom: 0px;
+        }
+        .avenger-end-poster {  
+            width: 350px;
+            height: auto;
+            border-radius: 15px;
+            margin-right: 20px; /* Adjust the margin to the right */
+        }
+        .description {
+            color: white;
+            margin-top: 20px; /* Add space above the description */
+        }
+        .flex-container {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px;
+        }
+        .text-content {
+            max-width: 1000px; /* Adjust as needed */
+            margin-top: 30px;
+        }
+        .light-line {
+            border: none;
+            border-top: 2px solid #c7c7c7; /* Light grey line */
+            margin-top: 10px;
+        }
+        .ratings-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .ratings-container img {
+            margin-left: 30px; /* Adjust spacing between images */
+        }
+        .ratings-container .imdb-txt {
+            margin-left: 5px;
+        }
+        .Directors {
+            margin-top: 8px;
+        }
+        .Writers {
+            margin-top: 8px;
+        }
+        .Stars {
+            margin-top: 8px;
+        }
+        .Tech {
+            margin-top: 8px;
+        }
+        .poster {
+            margin-top: 5px;
+        }
+        .b1{
+            margin: 10px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #796cc5; /* Bootstrap blue */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .b1:hover {
+            background-color: #504685; /* Darker blue */
+        }
+        .b1:active {
+            transform: scale(0.98); /* Slightly reduce size on click */
+        }
+        .b1:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(46, 41, 75); /* Blue outline for accessibility */
+        }
+        .youtube-trailer {
+            margin-left: 30px;
+            margin-top: 30px;
+            width: 560px;
+            height: 315px;
+            border-radius: 15px;
+        }
+        @media only screen and (max-width: 1024px) {
+            .imdb, .tomato, .letter {
+                width: 50px;
+                height: 50px;
+                margin-top: 10px;
+            }
+            .letter {
+                border-radius: 30px;
+            }
+            .imdb-txt {
+                margin-left: 12px;
+                margin-top: 12px;
+            }
+            .av {
+                border: 2px solid #c06b3e;
+                padding: 5px;
+                border-radius: 5px;
+                width: fit-content;
+                margin: 20px auto;
+                color: white;
+                text-align: center;
+            }
+            .avenger-end-name {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            .avenger-end-poster {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                border-radius: 15px;
+                margin: 20px auto;
+                display: block;
+            }
+            .description {
+                margin: 20px;
+                text-align: center;
+            }
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px;
+            }
+            .text-content {
+                width: 90%;
+                max-width: 1000px;
+                text-align: center;
+            }
+            .light-line {
+                border: none;
+                border-top: 2px solid #c7c7c7;
+                margin: 20px 0;
+            }
+            .ratings-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-top: 10px;
+            }
+            .ratings-container img {
+                margin: 0 10px;
+            }
+            .ratings-container .imdb-txt {
+                margin-left: 5px;
+            }
+            .Directors, .Writers, .Stars, .Tech {
+                margin-top: 8px;
+            }
+            .poster {
+                margin-top: 5px;
+            }
+            .b1 {
+                display: inline-block;
+                padding: 16px 180px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #fff;
+                background-color: #796cc5;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: background-color 0.3s, transform 0.3s;
+                margin: 20px auto;
+            }
+            .b1:hover {
+                background-color: #504685;
+            }
+            .b1:active {
+                transform: scale(0.98);
+            }
+            .b1:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgb(46, 41, 75);
+            }
+            footer {
+                text-align: center;
+                padding: 20px 0;
+            }
+            .social img {
+                width: 24px;
+                height: 24px;
+                margin: 0 10px;
+            }
+            .youtube-trailer {
+                width: 100%;
+                max-width: 560px;
+                height: auto;
+                margin: 20px auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container22">
+            <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="movie.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="Anime.html">Anime</a></li>
+                    <li><a href="Aboutus.html">About us</a></li>
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="avenger-end-name">Harry Potter and the Half-Blood Prince</h1>
+    <div class="av">
+        <p><strong> Action | Adventure </strong></p>
+    </div>
+
+    <div class="flex-container">
+        <img class="avenger-end-poster" src="https://lh3.googleusercontent.com/proxy/xsRuZZLY0teGWh2oTfc2EsOSo0lJP1zUeozeT2Vy0i6mj1lktmaGdUjVksP3ChopbIugKTKxRwpBNQH1RGXsc-k7OMzB70V0efREyH-U-QPuBr201CMXy2__GD3-Rrt381eIixr0eavdOheD" alt="Avengers: Endgame Poster">
+        <div class="text-content">
+            <h2 class="description"><strong>2009 : 2h 33m</strong></h2>
+            <p class="description"><strong>As Harry Potter begins his sixth year at Hogwarts, he discovers an old book marked as "the property of the Half-Blood Prince" and begins to learn more about Lord Voldemort's dark past.</strong></p>
+            <hr class="light-line">
+            <div class="ratings-container">
+                <img src="imdb.png" class="imdb" alt="IMDB Rating">
+                <div class="imdb-txt"><p><b>7.6</b></p></div>
+                <img src="tomato.png" class="tomato" alt="Rotten Tomatoes Rating">
+                <div class="imdb-txt"><p><b>%78</b></p></div>
+                <img src="letterboxed.png" class="letter" alt="Letterboxd Rating">
+                <div class="imdb-txt"><p><b>3.7</b></p></div>
+            </div>
+            <hr class="light-line">
+            <p class="Directors"><strong>Directors:</strong>  David Yates</p>
+            <p class="Writers"><strong>Writers:</strong>  Steve Kloves , J.K. Rowling</p>
+            <p class="Stars"><strong>Stars:</strong> Daniel Radcliffe , Emma Watson , Rupert Grint</p>
+            <hr class="light-line">
+            <div class="Tech">
+                <p><strong>Technical processes:</strong> <a href="#">ZheerSoftware & sa3a</a></p>
+                
+            </div>
+            <hr class="light-line">
+            <button class="b1"><a href="harrrypotter-halfb-watch.html" style="color: white; text-decoration: none;">Watch online</a></button>
+        </div>
+        <iframe class="youtube-trailer" src="https://www.youtube.com/embed/tAiy66Xrsz4?si=mSSp3poAQ37NEL9J" title="YouTube trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <footer>
+        <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
