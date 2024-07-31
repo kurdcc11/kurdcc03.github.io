@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    
+    <style>
+    .selector {
+            margin-bottom: 250px;
+        }
+        .selector label {
+            margin-right: 10px;
+        }
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .video-player iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        #season, #episode, #provider{
+            margin-top: 20px;     
+    margin-bottom: 10px; /* Example margin-bottom */
+    margin-left: 40px; /* Example margin-left */
+    margin-right: 40px; /* Example margin-right */
+    width: 200px; /* Adjust width as needed */
+    padding: 5px; /* Add padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #7e7d7d; /* Example border */
+    background-color: #7e7d7d; /* Example background color */
+    font-size: 14px; /* Example font size */
+    color: #fff8f8; /* Example text color */
+        }
+        
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    #season, #episode, #provider {
+        width: 30%; /* Make select elements full width on smaller screens */
+        margin: 5px 0; /* Adjust margins for smaller screens */
+        
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .selector {
+        order: 2; /* Moves the selector below the iframe */
+    }
+}
+/* Focus styles */
+#season:focus, #episode:focus, #provider:focus {
+    outline: none;
+    border-color: #232527;
+    box-shadow: 0 0 5px #232527;
+}
+
+
+
+
+
+
+
+       
+        .iframee {
+            margin-top: 205px;
+            margin-left: 450px;
+            width: 1024px;
+            height: 520px;
+        }
+        .a4 {
+            margin-top: 100px;
+            margin-bottom: 0;
+            display: flex;
+            flex-wrap: wrap; /* Ensure buttons wrap to the next line if necessary */
+            gap: 10px; /* Space between buttons */
+            justify-content: flex-start; /* Align buttons at the start of the row */
+            align-items: flex-start; /* Align buttons at the top of their container */
+        }
+
+        .a1, .a2, .a3 {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #796cc5; /* Bootstrap blue */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .a1:hover, .a2:hover, .a3:hover {
+            background-color: #504685; /* Darker blue on hover */
+        }
+
+        .a1:active, .a2:active, .a3:active {
+            transform: scale(0.98); /* Slightly reduce size on click */
+        }
+
+        .a1:focus, .a2:focus, .a3:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(46, 41, 75); /* Blue outline for accessibility */
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .iframee {
+                width: 600px;
+                height: 350px;
+                margin-left: 100px;
+                margin-right: auto;
+            }
+            .a4 {
+                justify-content: center;
+            }
+        }
+        @media only screen and (max-width:720px){
+            .iframee {
+                width: 350px;
+                height: 200px;
+                margin-left: 50px;
+                margin-right: auto;
+                margin-bottom: 100px;
+            }
+            .a4 {
+                justify-content: center;
+            }
+        }
+        h1 , h3{
+            color: white;
+            margin-left: 70px;
+            margin-top: 100px;
+            margin-bottom: 30px;
+        }  
+
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container22">
+        <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+            <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                <i class="search-icon">&#x1F50D;</i>
+            </div>
+            <div id="suggestions" class="suggestions"></div>
+        </div>
+        
+        <!-- Fullscreen Search Overlay -->
+        <div id="fullscreen-search" class="fullscreen-search">
+            <div class="fullscreen-content">
+                <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+            </div>
+        </div>
+        <div class="menu-toggle">
+            <input type="checkbox" id="menu-toggle-checkbox">
+            <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+        <ul class="desktop-menu">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="movie.html">Movies</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="animation.html">Animation</a></li>
+            <li><a href="Anime.html">Anime</a></li>
+            <li><a href="Aboutus.html">About us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<iframe class="iframee" id="episode-iframe" src="//vidmoly.to/embed-2byoeimcjfh5.html" scrolling="no" frameborder="0" width="640" height="360" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+
+<div class="selector">
+    <label for="season"></label>
+    <select id="season"></select>
+    
+    <label for="episode"></label>
+    <select id="episode"></select>
+    
+    <label for="provider"></label>
+    <select id="provider">
+        <option value="vidmoly">Vidmoly</option>
+        
+    </select>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="container23">
+        <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+    </div>
+    <div class="social">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+        <a href="#"><img src="telegram.png" alt="Telegram"></a>
+    </div>
+</footer>
+<script>
+    document.querySelectorAll('.a1, .a2, .a3').forEach(button => {
+        button.addEventListener('click', () => {
+            const link = button.getAttribute('data-link');
+            document.getElementById('videoIframe').src = link;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const seasonSelect = document.getElementById('season');
+    const episodeSelect = document.getElementById('episode');
+    const providerSelect = document.getElementById('provider');
+    const videoFrame = document.getElementById('episode-iframe'); // Corrected the ID to match your HTML
+
+    const videos = {
+        "1": {
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-2byoeimcjfh5.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-oxm25aooufnd.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-tvnu6p38ilis.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-f65xtzpg3s4r.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-mtj0hnk8ddze.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-znak98yptm0c.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-kmfvrg4e5a0c.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-rm7mv1qk26g2.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-j1b28hc4e0ss.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-whmg1lyajazp.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-vo7h3upowkl3.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-8cweagsggalw.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-65c0k0eq845y.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-t3mkzgx08vr2.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-zpc4idzdl4zl.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-q3frcta0fv88.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-y4z893ded3oz.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-rizzlgajx5as.html",
+            },
+            "19": {
+                "vidmoly": "//vidmoly.to/embed-glxcncxixlhr.html",
+            },
+            "20": {
+                "vidmoly": "//vidmoly.to/embed-06qeg7vj53m8.html",
+            },
+            "21": {
+                "vidmoly": "//vidmoly.to/embed-jw373nblqmeo.html",
+            },
+            "22": {
+                "vidmoly": "//vidmoly.to/embed-oys6kjrtivmd.html",
+            },
+            // Add more episodes for season 1
+        },
+        "2": {
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-aoq0d1v6l3cb.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-mqt9aci94dis.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-6j4jzowixtyt.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-eazaqf5wybkc.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-ffeqc6ulzfl2.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-1avw35vpsmbq.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-xwzi8s5wj0k1.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-7kv8e0qpgif7.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-tormo6uj90el.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-tormo6uj90el.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-x3y5r1y0r5ke.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-89prvjmxy2tc.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-4utfib3zqvzd.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-1pzt7dwp800v.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-rsiq6sw5jm4j.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-ezmeqfrpftef.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-u2296rqsike9.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-sb967r23f3qt.html",
+            },
+            "19": {
+                "vidmoly": "//vidmoly.to/embed-0vdjsjaq9paf.html",
+            },
+            "20": {
+                "vidmoly": "//vidmoly.to/embed-u9olcrcpu82v.html",
+            },
+            "21": {
+                "vidmoly": "//vidmoly.to/embed-9uswbiw9jd2q.html",
+            },
+            "22": {
+                "vidmoly": "//vidmoly.to/embed-035f7qk6z0yw.html",
+            },
+            // Add more episodes for season 2
+        },
+        "3":{ 
+            "1":{
+                "vidmoly": "///vidmoly.to/embed-jwbh1017au4w.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-czt1c6rdhboo.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-htlwzslnbgnw.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-5igy2zhslxvo.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-uiz2kdazcytw.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-5saya1dkgqct.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-gmny1m3yzt20.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-nmzgq11751kc.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-a06ynfv9zyre.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-vjlvm4upwc87.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-xgtx4g0tct27.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-a7wgwismtfec.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-5vu1n0pb2sv4.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-qtq4s8203zt8.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-132kudz409ey.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-nwqz9gwmf8c4.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-4sgpfb7gx5mq.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-2hbz2ss7a1ar.html",
+            },
+            "19": {
+                "vidmoly": "//vidmoly.to/embed-ptntnu7n93pv.html",
+            },
+            "20": {
+                "vidmoly": "//vidmoly.to/embed-93rkv4w6bqif.html",
+            },
+            "21": {
+                "vidmoly": "//vidmoly.to/embed-7zrjk5z9kbxy.html",
+            },
+      },
+      "4":{
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-jwbh1017au4w.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-map13yzbd27m.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-86ranxfdzoo9.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-nfe2o36xqdgb.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-mzlcirt0ucva.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-1kra1ccoguui.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-508d2f3kfhxg.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-whi0uhyf0g6r.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-lzf6ctfy3bhq.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-78lnq29ba4uc.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-rj5259qrt3bz.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-9g2szkz5lr2y.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-9x41fsonbwi8.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-lek2e4wjt1cl.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-neu324z9dnw8.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-6r29lajp3ksm.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-5z5efyt8dk5c.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-cmlcxtafzpfx.html",
+            },},
+
+            "5":{
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-uhspr8ruin7h.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-x38jioc4cfbj.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-urenqy5l62yq.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-7afb5wea1m9k.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-u0bkz0slpik7.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-bghhnt6pc71q.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-nthjc02hfcqf.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-3r2qamyb8jhf.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-fsgu76d96f6e.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-8f9b02fm1k5c.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-iv4hv3us48hi.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-hdka7c4it6oh.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-pogeezjzshas.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-x1v3ddftr5rv.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-ry7k2bq4t0b9.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-r9wyvvdwwwug.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-4n0pc4oqmm2t.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-cynfh4gmkxn7.html",
+            },
+            "19": {
+                "vidmoly": "//vidmoly.to/embed-y7ohl284lpvo.html",
+            },
+            "20": {
+                "vidmoly": "//vidmoly.to/embed-vdqj9vhls22o.html",
+            },
+            "21": {
+                "vidmoly": "//vidmoly.to/embed-y2tu9zwfz6g2.html",
+            },
+            "22": {
+                "vidmoly": "//vidmoly.to/embed-0yaa3yijdq06.html",
+            },
+        },
+        "6":{
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-r4w1xvh313us.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-h50vtl4h79um.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-734i9f4e071u.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-6fclt5wor6q0.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-fc1yjzz2zmn2.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-m4gnqeytnvt6.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-u1cxukxabk3j.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-ngu4h0e3vxxl.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-a0nku595o4q6.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-3u2la5jsyhzc.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-a8rf1ca7id2l.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-in12j17hymgd.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-2upyaw9d77o4.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-zmbgr5bpc7a9.html",
+            },
+            "15": {
+                "vidmoly": "//vidmoly.to/embed-w1nih5wdmwnp.html",
+            },
+            "16": {
+                "vidmoly": "//vidmoly.to/embed-3vufze6fkhzj.html",
+            },
+            "17": {
+                "vidmoly": "//vidmoly.to/embed-wkqn0ucddm89.html",
+            },
+            "18": {
+                "vidmoly": "//vidmoly.to/embed-z8gqv0nuxirh.html",
+            },
+            "19": {
+                "vidmoly": "//vidmoly.to/embed-dnk6ej291347.html",
+            },
+            "20": {
+                "vidmoly": "//vidmoly.to/embed-nlupx2y5n0ib.html",
+            },
+            "21": {
+                "vidmoly": "//vidmoly.to/embed-ozsu0xl77f1t.html",
+            },
+            "22": {
+                "vidmoly": "//vidmoly.to/embed-ps0va66q29ue.html",
+            },
+        },  
+        "7":{
+            "1": {
+                "vidmoly": "//vidmoly.to/embed-m11rlnev414j.html",
+            },
+            "2": {
+                "vidmoly": "//vidmoly.to/embed-fw85wd87f3jo.html",
+            },
+            "3": {
+                "vidmoly": "//vidmoly.to/embed-b5i02ga6y6fy.html",
+            },
+            "4": {
+                "vidmoly": "//vidmoly.to/embed-qu8154pa728g.html",
+            },
+            "5": {
+                "vidmoly": "//vidmoly.to/embed-jhpqvue7sgdl.html",
+            },
+            "6": {
+                "vidmoly": "//vidmoly.to/embed-wjz04g7ykwm0.html",
+            },
+            "7": {
+                "vidmoly": "//vidmoly.to/embed-qc70ba3wu83s.html",
+            },
+            "8": {
+                "vidmoly": "//vidmoly.to/embed-wvx4qvihzjxw.html",
+            },
+            "9": {
+                "vidmoly": "//vidmoly.to/embed-qgh7xcagf445.html",
+            },
+            "10": {
+                "vidmoly": "//vidmoly.to/embed-is874t3cd9bn.html",
+            },
+            "11": {
+                "vidmoly": "//vidmoly.to/embed-dh2vzhnct88k.html",
+            },
+            "12": {
+                "vidmoly": "//vidmoly.to/embed-f9dzr8c0922r.html",
+            },
+            "13": {
+                "vidmoly": "//vidmoly.to/embed-d03sgggbsqvw.html",
+            },
+            "14": {
+                "vidmoly": "//vidmoly.to/embed-yjuuzhwgg7hc.html",
+            },
+        
+        },  
+}
+    function populateSelect(selectElement, options, labelPrefix) {
+        selectElement.innerHTML = '';
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option;
+            opt.textContent = `${labelPrefix} ${option}`;
+            selectElement.appendChild(opt);
+        });
+    }
+
+    function updateVideo() {
+        const season = seasonSelect.value;
+        const episode = episodeSelect.value;
+        const provider = providerSelect.value;
+
+        const videoUrl = videos[season][episode][provider];
+        videoFrame.src = videoUrl;
+    }
+
+    seasonSelect.addEventListener('change', () => {
+        const selectedSeason = seasonSelect.value;
+        const episodes = Object.keys(videos[selectedSeason]);
+        populateSelect(episodeSelect, episodes, 'Episode');
+        updateVideo();
+    });
+
+    episodeSelect.addEventListener('change', updateVideo);
+    providerSelect.addEventListener('change', updateVideo);
+
+    // Initialize the selectors
+    const seasons = Object.keys(videos);
+    populateSelect(seasonSelect, seasons, 'Season');
+    seasonSelect.dispatchEvent(new Event('change'));
+});
+
+
+</script>
+
+</body>
+</html>

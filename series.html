@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Kurdcc</title>
+    <link rel="icon" type="image/x-icon" href="kurdsss.png">
+    <style>
+             
+             * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Container for the movies */
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+/* Ensure images are responsive */
+.movie {
+    display: inline-block;
+    margin: 5px;
+    position: relative; /* Ensure the overlay is positioned relative to the movie element */
+}
+
+.movie img {
+    width: 260px; /* Ensure the image fills the container */
+    height: 368px; /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin-left: 35px;
+    margin-top: 30px;
+    display: block;
+}
+
+.movie .overlay {
+    width: 260px; 
+    height: 368px; 
+    margin-top: 30px;
+    margin-left: 35px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000000b3;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    pointer-events: none; /* Prevent the overlay from affecting layout or size */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+.movie .overlay img{
+    border-radius: 100px;
+}
+
+
+.movie:hover .overlay {
+    opacity: 1;
+    pointer-events: all; /* Allow interaction when visible */
+}
+
+.movie .overlay .info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie .overlay .ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Add space between the logos and ratings */
+}
+
+.movie .overlay .ratings img {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.movie .overlay .ratings .rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.ra3a {
+    margin-left: 20px;
+}
+.ra3aa {
+    margin-left: 30px;
+}
+.ra3aa3 {
+   
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .movie img {
+        width: 221px; /* Ensure the image fills the container */
+        height: 324px; /* Maintain aspect ratio */
+        border-radius: 10px;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    .movie .overlay {
+    width: 221px; 
+    height: 324px; 
+    margin-top: 30px;
+    margin-left: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000000b3;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    pointer-events: none; /* Prevent the overlay from affecting layout or size */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+select {
+  margin-left: 30px;
+}
+
+.genre-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.genre-selector select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+}
+
+select {
+  margin-left: 300px;
+}
+
+.genre-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.genre-selector select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+
+
+/* Navigation and other elements */
+.nav, .footer {
+    text-align: center;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+        .movie-main{
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container22">
+            <a href="main.html"><b class="naw">Kurd</b><span class="naw-span"><b>CC</b></span></a>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions(this.value)">
+                <div id="mobile-search" class="mobile-search" onclick="openFullscreenSearch()">
+                    <i class="search-icon">&#x1F50D;</i>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            
+            <!-- Fullscreen Search Overlay -->
+            <div id="fullscreen-search" class="fullscreen-search">
+                <div class="fullscreen-content">
+                    <input type="text" id="fullscreen-search-input" placeholder="Search..." onkeyup="showSuggestionsFullscreen(this.value)">
+                    <i class="close-icon" onclick="closeFullscreenSearch()">&#x2715;</i>
+                    <div id="fullscreen-suggestions" class="fullscreen-suggestions"></div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-toggle-checkbox">
+                <label for="menu-toggle-checkbox" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="movie.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="animation.html">Animation</a></li>
+                    <li><a href="Anime.html">Anime</a></li>
+                    <li><a href="Aboutus.html">About us</a></li>
+                </ul>
+            </div>
+            <ul class="desktop-menu">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="movie.html">Movies</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="animation.html">Animation</a></li>
+                <li><a href="Anime.html">Anime</a></li>
+                <li><a href="Aboutus.html">About us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-section">
+        <h1 class="movie-main"><strong>Series</strong></h1>
+        <div class="genre-selector">
+            <select id="genreDropdown">
+                <option value="all">All</option>
+                <option value="action">Action</option>
+                <option value="romantic">Romantic</option>
+                <option value="comedy">Comedy</option>
+                <option value="horror">Horror</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="science fiction">Science fiction</option>
+                <option value="drama">Drama</option>
+                <option value="historical fiction">Historical Fiction</option>
+                <option value="mystery">Mystery</option>
+            </select>
+        </div>
+        <div class="movie-list">
+            <div class="movie" data-genre="crime">
+                <a href="Presumed-Innocent.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDk1MWM3NmItZmNjZS00ZmZkLTk1ZDAtZjFiN2FiZjczNmZhXkEyXkFqcGc@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Presumed Innocent</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.7</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">81%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">none</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="movie" data-genre="romantic">
+                <a href="queens-gambit.html">
+                    <img src="thequeens.png" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">The Queen's Gambit</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">8.5</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">94%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">4.2</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="movie" data-genre="comedy">
+                <a href="young-sheldon.html">
+                    <img src="younds1.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Young Sheldon</h3>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.7</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">82%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">none</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="movie" data-genre="drama">
+                <a href="darkmatter.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZTYzNGIzNDItMjQ5Yy00NmNiLWI4YTQtNzVjYzBjZDEzNDdjXkEyXkFqcGdeQXVyMjQ4ODcxNTM@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Dark Matter</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">7.8</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">82%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">none</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+             <div class="movie" data-genre="mystery">
+                <a href="sherlock.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTQzNGZjNDEtOTMwYi00MzFjLWE2ZTYtYzYxYzMwMjZkZDc5XkEyXkFqcGc@._V1_.jpg" alt="Movie Poster">
+                    <div class="overlay">
+                        <div class="info">
+                            <h3 class="movie-title">Sherlock</h3>
+                        
+    
+                            <p class="movie-description"></p>
+                            <div class="ratings">
+                                <div class="rating">
+                                    <img class="logo-imdb" src="imdb.png" alt="IMDb Logo">
+                                    <strong class="ra3a">9.1</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="tomato-logo" src="tomato.png" alt="Rotten Tomatoes Logo">
+                                    <strong class="ra3aa">83%</strong>
+                                </div>
+                                <div class="rating">
+                                    <img class="letter-logo" src="letterboxed.png" alt="Letterboxd Logo">
+                                    <strong class="ra3aa3">3.7</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </a>
+             </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <button class="page-button" data-page="1">1</button>
+        <button class="page-button" data-page="2">2</button>
+        <!-- Add more page buttons as needed -->
+    </div>
+    <footer>
+        <div class="container23">
+            <p class="copy">&copy; 2024 Kurd<span>cc</span>. All rights reserved.</p>
+        </div>
+        <div class="social">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="#"><img src="telegram.png" alt="Telegram"></a>
+        </div>
+    </footer>
+    <script >
+const data = [
+{ name: 'Avengers Endgame', url: 'avengers-endgame_details' },
+  { name: 'Young Sheldon', url: 'young-sheldon.html' },
+  { name: 'Oppenheimer', url: 'oppenheimer.html' },
+  { name: 'Leap Year', url: 'young-sheldon.html' },
+  { name: 'Napoleon', url: 'Napoleon.html' },
+  { name: 'Pawn Sacrifice', url: 'pawn-sacrifice.html' },
+  { name: 'The Queens Gambit', url: 'queens-gambit.html' },
+  { name: 'The Shawshank Redemption', url: 'the-shawshank-red.html' },
+  { name: 'Harry Potter and the Half-Blood Prince', url: 'harrypotter-halfb.html' },
+  { name: 'Harry Potter 20th Anniversary: Return to Hogwarts', url: 'harrypoter-doc.html' },
+  { name: 'Harry Potter and the Order of the Phoenix', url: 'harrypoter-order.html' },
+  { name: 'Harry Potter and the Deathly Hallows: Part 1', url: 'harrypotter-death1.html' },
+  { name: 'Inside Out 2', url: 'insideout2.html' },
+  { name: 'Harry Potter and the Deathly Hallows: Part 2', url: 'harrypotter-death2.html' },
+  { name: 'Inside Out', url: 'insideout.html' },
+  { name: 'Avatar: The Way of Water', url: 'avatar-way-water.html' },
+  { name: 'Despicable Me ', url: 'despicable-me-1.html' },
+  { name: 'Despicable Me 2 ', url: 'despicable-me-2.html' },
+  { name: 'Despicable Me 3', url: 'despicable-me-3.html' },
+  { name: 'Despicable Me 4', url: 'despicable-me-4.html' },
+  { name: 'Sherlock', url: 'sherlock.html' },
+  { name: 'Dark Matter', url: 'darkmatter.html' },
+  { name: 'The GodFather', url: 'godfather.html' },
+  { name: 'Presumed Innocent', url: 'Presumed-Innocent.html' },
+  { name: 'The Lord of the Rings: The Fellowship of the Ring', url: 'lord-of-ring-fellowship.html' },
+  { name: 'Kung Fu Panda', url: 'Kung-Fu-Panda.html' },
+  { name: 'Kung Fu Panda 2', url: 'Kung-Fu-Panda-2.html' },
+  { name: 'Kung Fu Panda 3', url: 'Kung-Fu-Panda-3.html' },
+  { name: 'Kung Fu Panda 4', url: 'Kung-Fu-Panda-4.html' },
+  { name: 'Soul', url: 'soul.html' },
+  { name: 'Interstellar', url: 'Interstellar.html' },
+  { name: 'John wick', url: 'johnwick.html' },
+  { name: 'Venom', url: 'venom.html' },
+  // Add more movies and series here
+];
+
+function showSuggestions(query) {
+  const suggestionsContainer = document.getElementById('suggestions');
+  suggestionsContainer.innerHTML = '';
+
+  if (query.length < 3) {
+      return;
+  }
+
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+  
+  filteredData.forEach(item => {
+      const suggestion = document.createElement('div');
+      suggestion.textContent = item.name;
+      suggestion.onclick = () => {
+          window.location.href = item.url;
+      };
+      suggestionsContainer.appendChild(suggestion);
+  });
+}
+
+function showSuggestionsFullscreen(query) {
+  const suggestionsContainer = document.getElementById('fullscreen-suggestions');
+  suggestionsContainer.innerHTML = '';
+
+  if (query.length < 3) {
+      return;
+  }
+
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+  
+  filteredData.forEach(item => {
+      const suggestion = document.createElement('div');
+      suggestion.textContent = item.name;
+      suggestion.onclick = () => {
+          window.location.href = item.url;
+      };
+      suggestionsContainer.appendChild(suggestion);
+  });
+}
+
+function openFullscreenSearch() {
+  document.getElementById('fullscreen-search').style.display = 'flex';
+  document.getElementById('fullscreen-search-input').focus();
+}
+
+function closeFullscreenSearch() {
+  document.getElementById('fullscreen-search').style.display = 'none';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         document.addEventListener('DOMContentLoaded', function() {
+            const genreDropdown = document.getElementById('genreDropdown');
+            const movies = document.querySelectorAll('.movie');
+            const pageButtons = document.querySelectorAll('.page-button');
+            const moviesPerPage = 20;
+            let currentPage = 1;
+
+            genreDropdown.addEventListener('change', filterMovies);
+            pageButtons.forEach(button => button.addEventListener('click', changePage));
+
+            function filterMovies() {
+                const selectedGenre = genreDropdown.value;
+                currentPage = 1;
+                updateDisplay(selectedGenre, currentPage);
+            }
+
+            function changePage(event) {
+                currentPage = parseInt(event.target.getAttribute('data-page'));
+                const selectedGenre = genreDropdown.value;
+                updateDisplay(selectedGenre, currentPage);
+                updateActivePageButton();
+            }
+
+            function updateDisplay(selectedGenre, page) {
+                const start = (page - 1) * moviesPerPage;
+                const end = start + moviesPerPage;
+                let count = 0;
+
+                movies.forEach(movie => {
+                    const movieGenre = movie.getAttribute('data-genre');
+                    if (selectedGenre === 'all' || movieGenre === selectedGenre) {
+                        if (count >= start && count < end) {
+                            movie.style.display = 'block';
+                        } else {
+                            movie.style.display = 'none';
+                        }
+                        count++;
+                    } else {
+                        movie.style.display = 'none';
+                    }
+                });
+            }
+
+            function updateActivePageButton() {
+                pageButtons.forEach(button => {
+                    button.classList.remove('active');
+                    if (parseInt(button.getAttribute('data-page')) === currentPage) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+
+            // Initial display of movies
+            updateDisplay('all', 1);
+            updateActivePageButton();
+        });
+    </script>
+</body>
+</html>
